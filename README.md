@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Manthan Tiwari — Athlete & Coaching Portfolio
 
-## Getting Started
+Premium personal brand site built with **Next.js 16**, **TypeScript**, **Tailwind CSS**, and **Framer Motion**.
 
-First, run the development server:
+## Run locally
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Content & images
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Edit **`src/data/site.ts`** for achievements, services, testimonials, gallery paths, and contact info.
 
-## Learn More
+Add your photography under **`public/images/`**:
 
-To learn more about Next.js, take a look at the following resources:
+| File | Purpose |
+|------|---------|
+| `hero.jpg` | Hero athlete photo |
+| `about.jpg` | About portrait |
+| `gallery/*.jpg` | Journey gallery (see `galleryItems` in data file) |
+| `results/*` | Before/after placeholders |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Missing images show a styled placeholder until files exist.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Inquiry form
 
-## Deploy on Vercel
+Submissions POST to **`/api/inquiry`** with server-side validation.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Without **`INQUIRY_WEBHOOK_URL`**: returns a honest success message that delivery is not configured (no fake email sent).
+- With **`INQUIRY_WEBHOOK_URL`**: forwards JSON payload to your endpoint.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Copy `.env.example` to `.env.local` and set variables as needed.
+
+## Instagram (@MANTHANLIFTS)
+
+Profile: [instagram.com/MANTHANLIFTS](https://www.instagram.com/MANTHANLIFTS/)
+
+Automated pulls use Meta’s **Instagram Graph API** (not public scraping). Set `INSTAGRAM_ACCESS_TOKEN` and `INSTAGRAM_USER_ID` in `.env.local`, or add post URLs to `instagramPostUrls` in `src/data/site.ts` for embeds.
+
+## Stack
+
+- Next.js App Router, React 19, TypeScript
+- Tailwind CSS v4
+- Framer Motion, Lucide icons
+- Aceternity / React Bits–inspired UI primitives in `src/components/ui/`
+
+## Build
+
+```bash
+npm run build
+npm start
+```
