@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Oswald } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import { siteConfig } from "@/data/site";
 import { loadInstagramFeed, loadInstagramProfile, pickHeroImage } from "@/lib/load-instagram";
 import { siteUrl } from "@/lib/site-url";
@@ -76,6 +77,7 @@ export default function RootLayout({
       <body className="min-h-full bg-background text-foreground">
         <JsonLdScripts />
         {children}
+        <Analytics />
       </body>
     </html>
   );
